@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guilds Leaderboards</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/css/leaderboards.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <%- include("fonts.ejs") %>
+
+  <body>
+    <%- include("nav.ejs") %>
+    <div id="config">
+      <div class="custom-select">
+        <select id="time">
+          <option value="weekly">This Week</option>
+          <option value="daily">Today</option>
+          <option value="weekly">This Week</option>
+          <option value="monthly">This Month</option>
+        </select>
+      </div>
+      <div class="custom-select" style="width: 150px">
+        <select id="type">
+          <option value="gxp">Guild XP</option>
+          <option value="gxp">Guild XP</option>
+          <option value="wins">Wins</option>
+          <option value="kills">Kills</option>
+          <option value="credits">Credits</option>
+          <option value="xp">XP</option>
+          <option value="losses">Losses</option>
+          <option value="deaths">Deaths</option>
+        </select>
+      </div>
+      <div class="custom-select">
+        <select id="type1">
+          <option value="guild">Guild</option>
+          <option value="player">Player</option>
+          <option value="guild">Guild</option>
+        </select>
+      </div>
+    </div>
+    <div id="data">
+      <div id="info"></div>
+      <div id="table">
+        <table id="tx"></table>
+      </div>
+    </div>
+  </body>
+  <script>
+    lbs = <%- JSON.stringify(data) %>;
+    change123 = () => {
+      time = document.getElementById("time");
+      timeN =time.options[time.selectedIndex].innerText;
+      time = time.options[time.selectedIndex].value;
+      type = document.getElementById("type");
+      typeN = type.options[type.selectedIndex].innerText
+      type = type.options[type.selectedIndex].value;
+      type1 = document.getElementById("type1");
+      type1N = type1.options[type1.selectedIndex].innerText;
+      type1 = type1.options[type1.selectedIndex].value;
+      document.getElementById('info').innerText = `${time[0].toUpperCase()}${time.slice(1)} ${type1N} Leaderboards`
+      tbD = `<thead><th>Rank</th><th>Name</th><th>${typeN}</th></thead>`;
+      l1 = lbs.data[type1][time][type]
+      for (i = 0; i < l1.length; i++) {
+        tbD =
+          tbD +
+          `<tr><td><b>${i + 1}</b></td><td id="leftT"><a onclick="changePath('${l1[i][0]}','${type1}')">${l1[i][0]}</a></td><td>${l1[i][1].toLocaleString()}</td></tr>`;
+      }
+      document.getElementById("tx").innerHTML = tbD;
+    }
+    changePath = (n,type) => {
+      if(type1 == "guild") window.location.pathname = `/guild/${n}`
+      else if(type1 == "player") window.location.pathname = `/player/${n}`
+    }
+    change123()
+  </script>
+  <script src="/js/select.js"></script>
+  <script src="/js/nav.js"></script>
+</html>

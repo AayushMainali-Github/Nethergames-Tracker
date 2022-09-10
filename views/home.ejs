@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guilds Tracker</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <%- include("fonts.ejs") %>
+
+  <body>
+    <%- include("nav.ejs") %>
+    <div id="MainText">
+      <div id="inp">
+        <img id="simg" src="/assets/search.png" />
+        <input type="text" placeholder="Enter Guild Name" id="guild" />
+      </div>
+      <div id="error"><%= error.replaceAll('%20',' ') %></div>
+      <button id="track" onclick="track()">Track</button>
+      <button id="prg" onclick="prgs()">Get Stats</button>
+      <br />
+    </div>
+  </body>
+  <script>
+    y = "<%= error %>";
+    if (y.includes("successfully"))
+      document.getElementById("error").style.color = "limegreen";
+    else document.getElementById("error").style.color = "red";
+    x = "<%= input %>";
+    document.getElementById("guild").value = x;
+    function track() {
+      input = document.getElementById("guild").value;
+      if (input == "") {
+        document.getElementById("error").innerText =
+          "Please Enter A Guild Name.";
+      } else window.location.pathname = `/track/${input}`;
+    }
+    function prgs() {
+      input = document.getElementById("guild").value;
+      if (input == "") {
+        document.getElementById("error").innerText =
+          "Please Enter A Guild Name.";
+      } else window.location.pathname = `/guild/${input}`;
+    }
+    document.getElementById("guild").onkeydown = function (e) {
+      if (e.keyCode == 13) {
+        prgs();
+      }
+    };
+  </script>
+  <script src="/js/nav.js"></script>
+</html>

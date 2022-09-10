@@ -1,0 +1,8 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@font-face {
+  font-family: "mcfont1";
+  src: url("/assets/MinecraftTen-VGORe.ttf");
+}

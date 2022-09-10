@@ -1,0 +1,137 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  color: white;
+  white-space: nowrap;
+}
+html,
+body {
+  background: url("/assets/background.png") center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #212121;
+  height: 100%;
+  width: 100%;
+}
+
+#config {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  margin: 5px;
+  border: 2px solid white;
+  width: 150px;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  background-color: rgba(0, 0, 0);
+
+  cursor: pointer;
+}
+.select-items {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+.select-hide {
+  display: none;
+}
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0);
+}
+#info {
+  text-align: center;
+  font-size: 18px;
+}
+#data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+#table {
+  font-size: 23px;
+  max-width: 95vw;
+  max-height: 50vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  border: 1px solid white;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  margin: 1px 7px;
+}
+tr {
+  border-bottom: white 1px solid;
+}
+tr:hover {
+  background-color: rgba(92, 83, 83, 0.356);
+}
+th,
+td {
+  padding: 5px 1vw;
+  text-align: center;
+}
+#leftT {
+  text-align: left;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: 0;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: underline white 1.5px;
+}
+
+@media screen and (max-width: 500px) {
+  table {
+    font-size: 17px;
+  }
+}

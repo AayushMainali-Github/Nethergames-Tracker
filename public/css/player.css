@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: white;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+html,
+body {
+  background: url("/assets/background.png") center;
+  background-size: cover;
+  background-color: #212121;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+}
+
+#main {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+#avt {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+#name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#selectionM {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#selectionM > div {
+  margin: 10px;
+  text-align: center;
+  color: rgb(138, 137, 137);
+  cursor: pointer;
+  padding: 5px 13px 7px;
+}
+#selectionM > div:hover {
+  color: white;
+}
+#mData {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#mData > div {
+  margin: 20px 40px;
+  text-align: left;
+}
+
+.hd {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.dd > span {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 550px) {
+  #mData > div {
+    margin: 20px 10px;
+  }
+  #selectionM > div {
+    margin: 5px;
+  }
+}

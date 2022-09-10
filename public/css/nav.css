@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#nav {
+  width: 100%;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#n1 {
+  font-size: 30px;
+  position: absolute;
+  left: 2vw;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bolder;
+}
+#n2 {
+  position: absolute;
+  right: 2vw;
+  grid-column: 7/8;
+  display: flex;
+  font-size: 20px;
+}
+#n2 > div {
+  font-family: "mcfont1";
+  margin: 0 0.5vw;
+  padding: 4.5px 15px 9px;
+  cursor: pointer;
+}
+#n2 > div:hover {
+  background-color: rgba(57, 54, 54, 0.5);
+  border-radius: 3px;
+}
+#nglogo {
+  height: 70px;
+  margin-right: 4px;
+}
+#credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  margin: 5px;
+}
+#selectM {
+  display: none;
+}
+#bar {
+  left: 0;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 230px;
+  height: 100vh;
+  background-color: #444444;
+}
+#bar > div {
+  margin: 30px;
+  font-size: 25px;
+  cursor: pointer;
+}
+#textNG {
+  font-family: "mcfont1";
+  color: #eb9b33;
+}
+@media screen and (max-width: 1200px) {
+  #nav {
+    height: 75px;
+  }
+  #nglogo {
+    height: 70px;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  #textNG {
+    display: none;
+  }
+  #nav {
+    height: 65px;
+  }
+  #nglogo {
+    height: 60px;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  #n2 {
+    display: none;
+  }
+  #nav {
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+  }
+  #n1 {
+    position: static;
+  }
+  #nglogo {
+    height: 50px;
+    margin-right: 0;
+  }
+  #selectM {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+  }
+  #menu {
+    width: 50px;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 400px) {
+  #n2 {
+    display: none;
+  }
+  #nav {
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+  }
+  #n1 {
+    position: static;
+  }
+  #nglogo {
+    height: 40px;
+    margin-right: 0;
+  }
+  #selectM {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+  }
+  #menu {
+    width: 40px;
+    height: 25px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #nav {
+    height: 50px;
+  }
+}
+
+@keyframes bar {
+  0% {
+    left: -230px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes barC {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -230px;
+  }
+}

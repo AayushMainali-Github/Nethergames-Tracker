@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guilds Tracker</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/css/player.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <%- include("fonts.ejs") %>
+
+  <body>
+    <%- include("nav.ejs") %>
+    <div id="main"></div>
+  </body>
+  <script src="/js/nav.js"></script>
+  <script>
+    active = "weekly";
+    change = (idd) => {
+      active = idd;
+
+      data = <%-JSON.stringify(data)%>;
+      mainHtm = `
+      <div id="name">
+        <img src="${data.others.avatar}" id="avt" />${data.others.name}
+      </div>
+      <div id="selectionM">
+        <div id="daily" onclick='change("daily")'>Today</div>
+        <div id="weekly" onclick='change("weekly")'>This Week</div>
+        <div id="monthly" onclick='change("monthly")'>This Month</div>
+      </div>
+      <div id="mData">
+        <div id="GI">
+          <div class="hd">Overall</div>
+          <div class="dd"><span>Wins:</span> ${data[active].wins.toLocaleString()}</div>
+          <div class="dd"><span>Kills:</span> ${data[active].kills.toLocaleString()}</div>
+          <div class="dd"><span>XP:</span> ${data[active].xp.toLocaleString()}</div>
+          <div class="dd"><span>Guild XP:</span> ${data[active].gxp.toLocaleString()}</div>
+          <div class="dd"><span>Credits:</span> ${data[active].credits.toLocaleString()}</div>
+          <div class="dd"><span>Losses:</span> ${data[active].losses.toLocaleString()}</div>
+          <div class="dd"><span>Deaths:</span> ${data[active].deaths.toLocaleString()}</div>
+        </div>
+        <div id="WS">
+          <div class="hd">Wins Summary</div>
+          <div class="dd"><span>Total:</span> ${data[active].wins.toLocaleString()}</div>
+          <div class="dd"><span>Bedwars:</span> ${data[active].bw.toLocaleString()}</div>
+          <div class="dd"><span>Skywars:</span> ${data[active].sw.toLocaleString()}</div>
+          <div class="dd"><span>The Bridge:</span> ${data[active].tb.toLocaleString()}</div>
+          <div class="dd"><span>Conquest:</span> ${data[active].cq.toLocaleString()}</div>
+          <div class="dd"><span>Survival Games:</span> ${data[active].sg.toLocaleString()}</div>
+          <div class="dd"><span>Duels:</span> ${data[active].duels.toLocaleString()}</div>
+        </div>
+      </div>
+    `;
+      document.getElementById("main").innerHTML = mainHtm;
+      document.getElementById("daily").style = {};
+      document.getElementById("weekly").style = {};
+      document.getElementById("monthly").style = {};
+      document.getElementById(active).style.background = 'rgba(138, 137, 137, 0.5)'
+      document.getElementById(active).style.color = 'white'
+      document.getElementById(active).style.borderRadius = '20px'
+    };
+    y = "<%= error %>";
+    console.log(y);
+    if (y == "UN") {
+      document.getElementById(
+        "main"
+      ).innerHTML = `<b>${window.location.pathname.slice(
+        8
+      )}</b> is not a valid IGN.`;
+    } else if (y == "SE") {
+      document.getElementById(
+        "main"
+      ).innerHTML = `Something went wrong while fetching data from NetherGames API.`;
+    } else if (y == "NG") {
+      document.getElementById(
+        "main"
+      ).innerHTML = `<b>${window.location.pathname.slice(
+        8
+      )}</b> is not in the database.`;
+    } else if (y == "AG") {
+      change("weekly");
+    }
+  </script>
+</html>
